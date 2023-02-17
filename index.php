@@ -31,8 +31,9 @@
         <tr>
             <td><?= $i ?></td>
             <td>
-                <a href="">edit</a> |
-                <a href="">delete</a>
+                <a href="ubah.php?id=<?= $mhs["id"]; ?>">ubah</a> |
+                <a href="hapus.php?id=<?= $mhs["id"]; ?>" onclick="return 
+                confirm('yakin?');">hapus</a>
             </td>
             <td><img src="img/<?= $mhs["gambar"] ?>" width="80"></td>
             <td><?= $mhs["nrp"]; ?></td>

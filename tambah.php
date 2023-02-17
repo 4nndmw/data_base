@@ -1,19 +1,24 @@
 <?php 
+require 'functions.php';
   $conn =  mysqli_connect("localhost", "root", "", "phpdasar");
   
   if (isset($_POST["submit"])){
-    
-    $nrp = $_POST["nrp"];
-    $nama = $_POST["nama"];
-    $email = $_POST["email"];
-    $jurusan = $_POST["jurusan"];
-    $gambar = $_POST["gambar"];
-    
-    $query = "INSERT INTO mahasiswa (nrp, nama, email, jurusan, gambar)
-    VALUES ('$nrp', '$nama', '$email', '$jurusan', '$gambar')";
-    
-        mysqli_query($conn, $query);
-  }
+
+    if( tambah($_POST) > 0){
+        echo "
+            <script>
+                alert('Data berhasil di tambahkan');
+            </script>
+        ";
+    }else{
+        echo "
+            <script>
+                alert('Data berhasil di tambahkan');
+            </script>
+            ";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,29 +35,29 @@
         <ul>
             <li>
                 <label for="nrp"> nrp :</label>
-                <input type="text" name="nrp" id="nrp">
+                <input type="text" name="nrp" id="nrp" required>
             </li>
             <li>
                 <label for="nama"> nama :</label>
-                <input type="text" name="nama" id="nama">
+                <input type="text" name="nama" id="nama" required>
             </li>
             <li>
                 <label for="email"> email :</label>
-                <input type="text" name="email" id="email">
+                <input type="text" name="email" id="email" required>
             </li>
             <li>
                 <label for="jurusan"> jurusan :</label>
-                <input type="text" name="jurusan" id="jurusan">
+                <input type="text" name="jurusan" id="jurusan" required>
             </li>
             <li>
                 <label for="gambar"> gambar :</label>
-                <input type="text" name="gambar" id="gambar">
+                <input type="text" name="gambar" id="gambar" required>
             </li>
             <li>
                 <button type="submit" name="submit">Tambah!</button>
             </li>
         </ul>
     </form>
-
+    <h4><a href="index.php">kembali</a></h4>
 </body>
 </html>
