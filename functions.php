@@ -11,6 +11,8 @@
             }
             return $rows;
    }
+
+               // Hapus tambah//////////////////
    function tambah($data){
     global $conn;
     $nrp = htmlspecialchars( $data["nrp"]);
@@ -28,14 +30,16 @@
        return mysqli_affected_rows($conn);
    }
 
-
+            // Hapus data//////////////////
    function hapus($id) {
     global $conn;
     mysqli_query($conn, "DELETE FROM mahasiswa WHERE id = $id");
 
     return mysqli_affected_rows($conn); 
     }
-    
+
+
+            // Hapus ubah//////////////////
     function ubah($data){
         global $conn;
         $id = $data["id"];

@@ -9,13 +9,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabel mahasiswa</title>
+    <link rel="stylesheet" href="src/index.css">
 </head>
 
 <body>
+
     <h1>Tabel Mahasiswa</h1>
-    <a href="tambah.php">Tambah data mahasiswa</a>
+    <div class="container">
+    <a class="add" href="tambah.php">Tambah data mahasiswa</a>
     <br><br>    
-    <table border="1" cellpadding="10" cellspacing="0">   
+    <table border="1" cellpadding="30" cellspacing="3">   
     <tr>
             <th>no</th>
             <th>aksi</th>
@@ -45,6 +48,7 @@
         <?php endforeach; ?>
 
     </table>
+    </div>
 </body>
 
 </html>
