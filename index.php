@@ -1,6 +1,24 @@
 <?php 
+session_start();
+
+    if( !isset($_SESSION["login"])){
+        header("location: login.php");
+        exit;
+    }
+
     require 'functions.php';
-    $mahasiswa = mysqli_query($conn, "SELECT * FROM mahasiswa");  
+    $mahasiswa = mysqli_query($conn, "SELECT * FROM mahasiswa");
+    
+    // tombol cari di ketik
+
+        if(isset($_POST["cari"])){
+            $mahasiswa = cari($_POST["keyword"]);
+        }  
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,17 +32,25 @@
 
 <body>
 
+        <a href="logout.php">Logout</a>
+
     <h1>Tabel Mahasiswa</h1>
     <div class="container">
     <a class="add" href="tambah.php">Tambah data mahasiswa</a>
     <br><br>    
+    <form action="" method="post">
+        <input type="text" name="keyword" autofocus placeholder="cari siswa" autocomplete="off" size="40">
+        <button type="submit" name="cari">cari!</button>
+    </form>
+
+<br>
     <table border="1" cellpadding="30" cellspacing="3">   
     <tr>
             <th>no</th>
             <th>aksi</th>
             <th>gambar</th>
             <th>nrp</th>
-            <th>nama</th>
+            <th>nama</th> 
             <th>email</th>
             <th>jurusan</th>
         </tr>

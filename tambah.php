@@ -1,4 +1,10 @@
 <?php 
+session_start();
+
+if( !isset($_SESSION["login"])){
+    header("location: login.php");
+    exit;
+}
 require 'functions.php';
   $conn =  mysqli_connect("localhost", "root", "", "phpdasar");
   
@@ -32,7 +38,7 @@ require 'functions.php';
 <body>
     <h1>Tambah data mahasiswa</h1>
 
-     <form action="" method="POST">  <!-- data yang siap di isi pada menu form -->
+     <form action="" method="POST" enctype="multipart/form-data">  <!-- data yang siap di isi pada menu form -->
         <ul>
             <li>
                 <label for="nrp"> nrp :</label>
@@ -52,7 +58,7 @@ require 'functions.php';
             </li>
             <li>
                 <label for="gambar"> gambar :</label>
-                <input type="text" name="gambar" id="gambar" required>
+                <input type="file" name="gambar" id="gambar" required>
             </li>
             <li>
                 <button type="submit" name="submit">Tambah!</button>

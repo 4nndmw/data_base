@@ -1,4 +1,10 @@
 <?php 
+session_start();
+
+if( !isset($_SESSION["login"])){
+    header("location: login.php");
+    exit;
+}
 require 'functions.php';
 
     // ambil data di url
@@ -42,8 +48,9 @@ require 'functions.php';
 <body>
     <h1>update data mahasiswa</h1>
 
-     <form action="" method="POST">  <!-- data yang siap di isi pada menu form -->
-        <input type="hidden" name="id" value="<?= $mhss["id"]; ?>">  
+     <form action="" method="POST" enctype="multipart/form-data">  <!-- data yang siap di isi pada menu form -->
+     <input type="hidden" name="id" value="<?= $mhss["id"]; ?>">  
+     <input type="hidden" name="gambarLama" value="<?= $mhss["gambar"]; ?>">  
         <ul>
             <li>
                 <label for="nrp"> nrp :</label>
@@ -63,7 +70,8 @@ require 'functions.php';
             </li>
             <li>
                 <label for="gambar"> gambar :</label>
-                <input type="text" name="gambar" id="gambar" required value="<?= $mhss["gambar"]; ?>">
+                <img src="img/ <?= $mhs['gambar']; ?> " width="40" alt="">
+                <input type="file" name="gambar" id="gambar" required value="<?= $mhss["gambar"]; ?>">
             </li>
             <li>
                 <button type="submit" name="submit">update!</button>
